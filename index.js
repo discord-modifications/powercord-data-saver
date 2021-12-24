@@ -10,8 +10,10 @@ const { container } = getModule(['godlike', 'container'], false);
 
 module.exports = class HideDMButtons extends Plugin {
    startPlugin() {
+      this.save = this.save.bind(this);
+
       this.interval = setInterval(this.save, 18e5);
-      waitFor(`.${container}`).then(() => this.save());
+      waitFor(`.${container}`).then(this.save);
    }
 
    async save() {
