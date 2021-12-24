@@ -1,0 +1,8 @@
+{
+   "name": "Data Saver",
+   "version": "1.0.0",
+   "description": "Saves friends & Servers every 30 minutes to a file.",
+   "author": "eternal",
+   "discord": "shnvz5ryAt",
+   "license": "Unlicensed"
+}
