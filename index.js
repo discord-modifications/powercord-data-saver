@@ -1,18 +1,20 @@
 const { Plugin } = require('powercord/entities');
 const { getModule } = require('powercord/webpack');
+const { waitFor } = require('powercord/util');
 
 const { getRelationships } = getModule(['getRelationships'], false);
 const { getUser } = getModule(['getUser'], false);
 const { getGuilds } = getModule(['getGuilds'], false);
 const { getCurrentUser } = getModule(['getCurrentUser', 'getUser'], false);
+const { container } = getModule(['godlike', 'container'], false);
 
 module.exports = class HideDMButtons extends Plugin {
    startPlugin() {
       this.interval = setInterval(this.save, 18e5);
-      this.save();
+      waitFor(`.${container}`).then(() => this.save());
    }
 
-   save() {
+   async save() {
       const user = getCurrentUser();
       if (!user) return;
 
